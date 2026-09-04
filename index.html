@@ -1,0 +1,468 @@
+<title>Kim Ihyeon</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;0,9..144,650;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --paper: #EEF0E9;
+    --paper-raised: #E3E6DC;
+    --paper-raised-2: #D9DCD1;
+    --ink: #16232A;
+    --ink-soft: #4C5C5A;
+    --ink-faint: #6E7C78;
+    --accent: #2C7A69;
+    --accent-strong: #1F5B4E;
+    --accent-ink: #F3F6F1;
+    --accent-2: #B04F2C;
+    --line: rgba(22,35,42,0.14);
+    --line-strong: rgba(22,35,42,0.26);
+    --nucleus: #4B6EB0;
+    --mito: #C0702F;
+    --membrane: #34897A;
+    --cytoplasm: #8776AC;
+    --extracellular: #B15870;
+    --shadow: 0 1px 2px rgba(22,35,42,0.06), 0 8px 24px -12px rgba(22,35,42,0.18);
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #101817;
+      --paper-raised: #182221;
+      --paper-raised-2: #202B29;
+      --ink: #E7ECE6;
+      --ink-soft: #A9B7B0;
+      --ink-faint: #7E8D87;
+      --accent: #6BD3B7;
+      --accent-strong: #8FE0C9;
+      --accent-ink: #0C1615;
+      --accent-2: #E39163;
+      --line: rgba(231,236,230,0.14);
+      --line-strong: rgba(231,236,230,0.26);
+      --nucleus: #87A6E6;
+      --mito: #E39163;
+      --membrane: #6BD3B7;
+      --cytoplasm: #B7A6DE;
+      --extracellular: #E091A4;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #101817;
+    --paper-raised: #182221;
+    --paper-raised-2: #202B29;
+    --ink: #E7ECE6;
+    --ink-soft: #A9B7B0;
+    --ink-faint: #7E8D87;
+    --accent: #6BD3B7;
+    --accent-strong: #8FE0C9;
+    --accent-ink: #0C1615;
+    --accent-2: #E39163;
+    --line: rgba(231,236,230,0.14);
+    --line-strong: rgba(231,236,230,0.26);
+    --nucleus: #87A6E6;
+    --mito: #E39163;
+    --membrane: #6BD3B7;
+    --cytoplasm: #B7A6DE;
+    --extracellular: #E091A4;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -12px rgba(0,0,0,0.5);
+  }
+
+  *{ box-sizing: border-box; }
+  html[lang="ko"]{ word-break: keep-all; overflow-wrap: break-word; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  ::selection{ background: var(--accent); color: var(--accent-ink); }
+
+  a{ color: inherit; }
+  .wrap{ max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- header ---------- */
+  header.site{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 26px 0 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mark{
+    font-family:'Fraunces', serif; font-weight:560; font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .mark .hl{ color: var(--accent); }
+  .header-right{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  nav.top-links{ display:flex; gap: 20px; flex-wrap:wrap; }
+  nav.top-links a{
+    text-decoration:none; font-size: 0.86rem; color: var(--ink-soft);
+    display:flex; align-items:center; gap:6px;
+    transition: color .15s ease;
+  }
+  nav.top-links a:hover, nav.top-links a:focus-visible{ color: var(--accent); }
+  nav.top-links svg{ width:15px; height:15px; fill: currentColor; }
+
+  .lang-switch{
+    display:flex; border:1px solid var(--line-strong); border-radius:999px;
+    padding: 2px; gap:2px;
+  }
+  .lang-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.04em;
+    border:none; background:transparent; color: var(--ink-faint);
+    padding: 5px 11px; border-radius:999px; cursor:pointer;
+    transition: background .15s ease, color .15s ease;
+  }
+  .lang-btn:hover{ color: var(--ink-soft); }
+  .lang-btn[aria-pressed="true"]{ background: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding: 56px 0 12px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.11em;
+    color: var(--accent-2);
+    margin: 0 0 16px;
+  }
+  h1.name{
+    font-family:'Fraunces', serif; font-weight: 560; font-optical-sizing:auto;
+    font-size: clamp(2.5rem, 6vw, 3.6rem);
+    line-height: 1.04; letter-spacing: -0.01em;
+    margin: 0 0 18px; text-wrap: balance;
+  }
+  p.lede{
+    font-family:'Fraunces', serif; font-style: italic; font-weight:500;
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    color: var(--ink-soft);
+    max-width: 34ch;
+    margin: 0 0 26px; text-wrap: balance;
+  }
+  p.bio{
+    max-width: 62ch;
+    font-size: 1.02rem;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+
+  /* ---------- sequence strip ---------- */
+  .seq-strip{
+    margin: 34px 0 8px;
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display:flex; flex-wrap:wrap; align-items:baseline; gap: 6px 14px;
+  }
+  .seq-strip .seq-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem;
+    text-transform:uppercase; letter-spacing:0.09em; color:var(--ink-faint);
+  }
+  .seq-strip code{
+    font-family:'IBM Plex Mono', monospace; font-size:0.86rem;
+    color: var(--accent-strong); letter-spacing: 0.03em;
+    word-break: break-all;
+  }
+  .seq-strip .seq-note{
+    font-size:0.78rem; color: var(--ink-faint);
+  }
+
+  /* ---------- viz ---------- */
+  .viz-block{ margin: 44px 0 8px; }
+  .viz-frame{
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-raised);
+    padding: 18px 18px 14px;
+    box-shadow: var(--shadow);
+  }
+  .viz-frame svg{ width:100%; height:auto; display:block; }
+  .viz-caption{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-top: 10px; gap: 10px; flex-wrap:wrap;
+  }
+  .viz-caption .t{ font-size:0.8rem; color: var(--ink-faint); }
+  .legend{ display:flex; gap:12px; flex-wrap:wrap; }
+  .legend .item{ display:flex; align-items:center; gap:6px; font-size:0.74rem; color: var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
+  .legend .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+  .dot-pt{ animation: drift 7s ease-in-out infinite; transform-origin: center; }
+  .dot-pt:nth-child(3n){ animation-duration: 9s; }
+  .dot-pt:nth-child(5n){ animation-duration: 11s; animation-direction: reverse; }
+  @keyframes drift{
+    0%,100%{ transform: translate(0,0); }
+    50%{ transform: translate(0.6px, -1.1px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .dot-pt{ animation: none; }
+  }
+
+  /* ---------- sections ---------- */
+  section{ padding: 54px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom: none; }
+  h2.section-title{
+    font-family:'Fraunces', serif; font-weight: 560;
+    font-size: 1.5rem; margin: 0 0 18px; letter-spacing:-0.01em;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace; color: var(--accent-2);
+    font-size:0.8rem; margin-right: 10px;
+  }
+  section p{ max-width: 62ch; margin: 0 0 14px; }
+
+  .compartments{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 22px; }
+  .tag{
+    display:flex; align-items:center; gap:7px;
+    border:1px solid var(--line-strong); border-radius: 999px;
+    padding: 6px 13px 6px 10px;
+    font-family:'IBM Plex Mono', monospace; font-size: 0.78rem;
+    background: var(--paper-raised);
+  }
+  .tag .dot{ width:9px; height:9px; border-radius:50%; }
+
+  .stack-line{
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
+    color: var(--ink-faint); margin-top: 22px;
+  }
+  .stack-line b{ color: var(--ink-soft); font-weight:500; }
+
+  /* recognition */
+  .recog-card{
+    display:flex; gap:18px; align-items:flex-start;
+    border:1px solid var(--line); border-radius:12px;
+    background: var(--paper-raised);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .recog-card svg{ width:30px; height:30px; flex:none; fill:none; stroke: var(--accent-2); stroke-width:1.4; margin-top:2px; }
+  .recog-card .team{
+    font-family:'Fraunces', serif; font-weight:560; font-size:1.14rem; margin: 0 0 8px;
+  }
+  .recog-card ul{ margin:0; padding: 0; list-style:none; display:flex; flex-direction:column; gap:6px; }
+  .recog-card li{ font-size:0.92rem; color: var(--ink-soft); display:flex; gap:8px; align-items:baseline; }
+  .recog-card li::before{ content:"—"; color: var(--accent-2); }
+  .recog-year{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color: var(--ink-faint); margin-top:10px; }
+
+  /* links */
+  .link-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin-top:6px; }
+  .link-card{
+    display:flex; align-items:center; gap:13px;
+    border:1px solid var(--line); border-radius:11px;
+    padding: 16px 18px;
+    text-decoration:none; color: var(--ink);
+    background: var(--paper-raised);
+    transition: border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .link-card:hover, .link-card:focus-visible{
+    border-color: var(--accent); transform: translateY(-2px);
+    background: var(--paper-raised-2);
+    outline: none;
+  }
+  .link-card svg{ width:20px; height:20px; fill: currentColor; flex:none; }
+  .link-card .lc-text{ display:flex; flex-direction:column; gap:2px; }
+  .link-card .lc-label{ font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color: var(--ink-faint); font-family:'IBM Plex Mono', monospace; }
+  .link-card .lc-value{ font-size:0.92rem; font-weight:500; }
+
+  footer{
+    padding: 30px 0 46px;
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color: var(--ink-faint);
+  }
+
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+  @media (max-width: 520px){
+    header.site{ flex-direction:column; align-items:flex-start; gap:14px; }
+    .recog-card{ flex-direction:column; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="site">
+    <div class="mark"><span data-en="Kim" data-ko="김">Kim</span> <span class="hl" data-en="Ihyeon" data-ko="이현">Ihyeon</span></div>
+    <div class="header-right">
+      <nav class="top-links">
+        <a href="https://github.com/vj9wjnnbwm-sketch" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/i-hyeon-kim-59206b433" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16"><path d="M3.5 5.6H.7V15h2.8V5.6ZM2.1 4.4c.9 0 1.5-.6 1.5-1.4C3.6 2.2 3 1.6 2.1 1.6S.6 2.2.6 3c0 .8.6 1.4 1.5 1.4ZM15.4 15h-2.8V9.9c0-1.2-.4-2-1.5-2-.8 0-1.3.6-1.5 1.1-.1.2-.1.5-.1.7V15H6.7s0-8.7 0-9.6h2.8v1.4c.4-.6 1-1.5 2.6-1.5 1.9 0 3.3 1.2 3.3 3.9V15Z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:2hyeon1702@gmail.com">
+          <svg viewBox="0 0 16 16"><path d="M1.5 3h13a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm.4 1.4v.1L8 8.8l6.1-4.3v-.1H1.9ZM14.5 5.8 8.3 10.1a.6.6 0 0 1-.6 0L1.5 5.8V12h13V5.8Z"/></svg>
+          <span data-en="Email" data-ko="이메일">Email</span>
+        </a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language / 언어">
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="ko" aria-pressed="false">KO</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" style="border-bottom:none; padding-bottom:0;">
+    <p class="eyebrow" data-en="Computational Biology · Haeryong High School" data-ko="계산생물학 · 해룡고등학교">Computational Biology &middot; Haeryong High School</p>
+    <h1 class="name" data-en="Kim Ihyeon" data-ko="김이현">Kim Ihyeon</h1>
+    <p class="lede" data-en="I study where a protein ends up inside the cell — and how much of that a language model already knows." data-ko="저는 단백질이 세포 안 어디로 향하는지, 그리고 언어 모델이 이미 그것을 얼마나 알고 있는지를 연구합니다.">I study where a protein ends up inside the cell — and how much of that a language model already knows.</p>
+    <p class="bio" data-en="I'm a student researcher at Haeryong High School working in computational biology. My current project applies semi-supervised learning to protein subcellular localization prediction, built on embeddings from the ESM-2 protein language model — aiming to make accurate predictions possible even when labeled data is scarce." data-ko="저는 해룡고등학교에서 계산생물학을 연구하는 학생 연구자입니다. 현재 진행 중인 프로젝트는 ESM-2 단백질 언어모델의 임베딩을 기반으로 준지도 학습을 활용해 단백질의 세포 내 위치를 예측하는 것으로, 라벨이 부족한 상황에서도 정확한 예측이 가능하도록 만드는 것이 목표입니다.">I'm a student researcher at Haeryong High School working in computational biology. My current project applies semi-supervised learning to protein subcellular localization prediction, built on embeddings from the ESM-2 protein language model — aiming to make accurate predictions possible even when labeled data is scarce.</p>
+
+    <div class="seq-strip">
+      <span class="seq-label" data-en="Input" data-ko="입력">Input</span>
+      <code>MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQ…</code>
+      <span class="seq-note" data-en="a raw amino-acid sequence, no structure needed" data-ko="구조 정보 없이, 아미노산 서열만으로">a raw amino-acid sequence, no structure needed</span>
+    </div>
+
+    <div class="viz-block">
+      <div class="viz-frame">
+        <svg id="viz" viewBox="0 0 640 220" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="viz-caption">
+          <span class="t" data-en="Illustrative projection of ESM-2 embeddings, clustered by predicted compartment" data-ko="예측된 세포 내 구획별로 군집화한 ESM-2 임베딩의 예시적 투영도">Illustrative projection of ESM-2 embeddings, clustered by predicted compartment</span>
+        </div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><span class="section-num">01</span><span data-en="Research" data-ko="연구">Research</span></h2>
+    <p data-en="Most localization datasets are small and expensive to label, while unlabeled protein sequences are abundant. My work explores whether ESM-2 embeddings already encode enough biological signal that a semi-supervised classifier can bridge that gap — turning sequence alone into a confident guess about where in the cell a protein belongs." data-ko="라벨이 붙은 위치 데이터셋은 작고 구축 비용이 크지만, 라벨이 없는 단백질 서열은 매우 풍부합니다. 저의 연구는 ESM-2 임베딩이 이미 충분한 생물학적 정보를 담고 있어 준지도 학습 분류기가 그 격차를 메울 수 있는지를 탐구합니다 — 서열 정보만으로 단백질이 세포 내 어디에 위치하는지 확신 있게 예측하는 것이 목표입니다.">Most localization datasets are small and expensive to label, while unlabeled protein sequences are abundant. My work explores whether ESM-2 embeddings already encode enough biological signal that a semi-supervised classifier can bridge that gap — turning sequence alone into a confident guess about where in the cell a protein belongs.</p>
+
+    <div class="compartments">
+      <span class="tag"><span class="dot" style="background:var(--nucleus)"></span><span data-en="Nucleus" data-ko="핵">Nucleus</span></span>
+      <span class="tag"><span class="dot" style="background:var(--mito)"></span><span data-en="Mitochondrion" data-ko="미토콘드리아">Mitochondrion</span></span>
+      <span class="tag"><span class="dot" style="background:var(--membrane)"></span><span data-en="Cell membrane" data-ko="세포막">Cell membrane</span></span>
+      <span class="tag"><span class="dot" style="background:var(--cytoplasm)"></span><span data-en="Cytoplasm" data-ko="세포질">Cytoplasm</span></span>
+      <span class="tag"><span class="dot" style="background:var(--extracellular)"></span><span data-en="Extracellular space" data-ko="세포외 공간">Extracellular space</span></span>
+    </div>
+
+    <p class="stack-line"><b data-en="Model" data-ko="모델">Model</b> ESM-2 (Meta AI) &nbsp;·&nbsp; <b data-en="Approach" data-ko="접근법">Approach</b> <span data-en="semi-supervised pseudo-labeling" data-ko="준지도 학습(가짜 라벨링)">semi-supervised pseudo-labeling</span> &nbsp;·&nbsp; <b data-en="Task" data-ko="과제">Task</b> <span data-en="subcellular localization classification" data-ko="세포 내 위치 분류">subcellular localization classification</span></p>
+  </section>
+
+  <section>
+    <h2 class="section-title"><span class="section-num">02</span><span data-en="Recognition" data-ko="수상">Recognition</span></h2>
+    <div class="recog-card">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5.2"/><path d="M8.5 12.6 6.5 21l5.5-3 5.5 3-2-8.4"/></svg>
+      <div>
+        <p class="team" data-en="Team Haeryong Cass" data-ko="해룡 캐스 팀">Team Haeryong Cass</p>
+        <ul>
+          <li data-en="2026 KYPT — Honorable Mention" data-ko="2026 KYPT — 장려상">2026 KYPT — Honorable Mention</li>
+          <li data-en="Kwon Myeong-hoe Award (권명회상)" data-ko="권명회상 (Kwon Myeong-hoe Award)">Kwon Myeong-hoe Award (권명회상)</li>
+        </ul>
+        <p class="recog-year">2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <h2 class="section-title"><span class="section-num">03</span><span data-en="Get in touch" data-ko="연락하기">Get in touch</span></h2>
+    <div class="link-grid">
+      <a class="link-card" href="mailto:2hyeon1702@gmail.com">
+        <svg viewBox="0 0 16 16"><path d="M1.5 3h13a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm.4 1.4v.1L8 8.8l6.1-4.3v-.1H1.9ZM14.5 5.8 8.3 10.1a.6.6 0 0 1-.6 0L1.5 5.8V12h13V5.8Z"/></svg>
+        <span class="lc-text"><span class="lc-label" data-en="Email" data-ko="이메일">Email</span><span class="lc-value">2hyeon1702@gmail.com</span></span>
+      </a>
+      <a class="link-card" href="https://github.com/vj9wjnnbwm-sketch" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span class="lc-text"><span class="lc-label" data-en="GitHub" data-ko="깃허브">GitHub</span><span class="lc-value">vj9wjnnbwm-sketch</span></span>
+      </a>
+      <a class="link-card" href="https://www.linkedin.com/in/i-hyeon-kim-59206b433" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M3.5 5.6H.7V15h2.8V5.6ZM2.1 4.4c.9 0 1.5-.6 1.5-1.4C3.6 2.2 3 1.6 2.1 1.6S.6 2.2.6 3c0 .8.6 1.4 1.5 1.4ZM15.4 15h-2.8V9.9c0-1.2-.4-2-1.5-2-.8 0-1.3.6-1.5 1.1-.1.2-.1.5-.1.7V15H6.7s0-8.7 0-9.6h2.8v1.4c.4-.6 1-1.5 2.6-1.5 1.9 0 3.3 1.2 3.3 3.9V15Z"/></svg>
+        <span class="lc-text"><span class="lc-label" data-en="LinkedIn" data-ko="링크드인">LinkedIn</span><span class="lc-value">i-hyeon-kim</span></span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span data-en="Kim Ihyeon — Computational Biology" data-ko="김이현 — 계산생물학">Kim Ihyeon — Computational Biology</span>
+    <span data-en="Updated 2026" data-ko="2026년 업데이트">Updated 2026</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var compartments = [
+    { name:'Nucleus',        nameKo:'핵',          css:'--nucleus',       cx:150, cy:100, spread:46, n:16 },
+    { name:'Mitochondrion',  nameKo:'미토콘드리아', css:'--mito',           cx:300, cy:60,  spread:34, n:12 },
+    { name:'Membrane',       nameKo:'세포막',       css:'--membrane',       cx:470, cy:150, spread:40, n:14 },
+    { name:'Cytoplasm',      nameKo:'세포질',       css:'--cytoplasm',      cx:260, cy:170, spread:38, n:13 },
+    { name:'Extracellular',  nameKo:'세포외',       css:'--extracellular',  cx:540, cy:70,  spread:30, n:10 }
+  ];
+
+  // deterministic pseudo-random generator so the layout is stable
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  var rand = mulberry32(1702);
+
+  var svg = document.getElementById('viz');
+  var ns = 'http://www.w3.org/2000/svg';
+  var styles = getComputedStyle(document.documentElement);
+
+  function colorOf(varName){
+    return styles.getPropertyValue(varName).trim();
+  }
+
+  var frag = document.createDocumentFragment();
+  compartments.forEach(function(c, ci){
+    for (var i = 0; i < c.n; i++){
+      var angle = rand() * Math.PI * 2;
+      var r = Math.pow(rand(), 0.55) * c.spread;
+      var x = c.cx + Math.cos(angle) * r;
+      var y = c.cy + Math.sin(angle) * r * 0.72;
+      var circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', x.toFixed(1));
+      circle.setAttribute('cy', y.toFixed(1));
+      circle.setAttribute('r', (i === 0 ? 4.4 : 2.6 + rand()*1.1).toFixed(1));
+      circle.setAttribute('fill', 'var(' + c.css + ')');
+      circle.setAttribute('fill-opacity', i === 0 ? '0.95' : (0.55 + rand()*0.3).toFixed(2));
+      circle.setAttribute('class', 'dot-pt');
+      circle.style.animationDelay = (rand() * -8).toFixed(2) + 's';
+      frag.appendChild(circle);
+    }
+  });
+  svg.appendChild(frag);
+
+  var legend = document.getElementById('legend');
+  compartments.forEach(function(c){
+    var item = document.createElement('span');
+    item.className = 'item';
+    var dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.style.background = 'var(' + c.css + ')';
+    item.appendChild(dot);
+    var label = document.createElement('span');
+    label.dataset.en = c.name;
+    label.dataset.ko = c.nameKo;
+    label.textContent = c.name;
+    item.appendChild(label);
+    legend.appendChild(item);
+  });
+
+  // ---------- language toggle ----------
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var val = lang === 'ko' ? el.dataset.ko : el.dataset.en;
+      if (val !== undefined) el.textContent = val;
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+    });
+    try { localStorage.setItem('kimihyeon-lang', lang); } catch(e){}
+  }
+
+  var storedLang = 'en';
+  try { storedLang = localStorage.getItem('kimihyeon-lang') || 'en'; } catch(e){}
+  applyLang(storedLang === 'ko' ? 'ko' : 'en');
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){ applyLang(btn.dataset.lang); });
+  });
+})();
+</script>
