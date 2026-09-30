@@ -246,6 +246,45 @@
   .recog-card li::before{ content:"—"; color: var(--accent-2); }
   .recog-year{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color: var(--ink-faint); margin-top:10px; }
 
+  /* paper */
+  .paper-card{
+    border:1px solid var(--line); border-radius:12px;
+    background: var(--paper-raised);
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+  }
+  .paper-meta{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.08em; color: var(--accent-2);
+    margin: 0 0 10px;
+  }
+  .paper-title{
+    font-family:'Fraunces', serif; font-weight:560; font-size:1.22rem; line-height:1.3;
+    margin: 0 0 6px; text-wrap: balance;
+  }
+  .paper-subtitle{ font-size:0.92rem; color: var(--ink-soft); margin: 0 0 12px; }
+  .paper-author{ font-size:0.84rem; color: var(--ink-faint); margin: 0 0 16px; }
+  .paper-card p.paper-summary{ font-size:0.95rem; margin: 0 0 18px; }
+  .paper-findings{ margin:0 0 20px; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px; }
+  .paper-findings li{ font-size:0.9rem; color: var(--ink-soft); display:flex; gap:8px; align-items:baseline; }
+  .paper-findings li::before{ content:"—"; color: var(--accent-2); flex:none; }
+  .paper-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:0.86rem; font-weight:500; text-decoration:none;
+    padding: 9px 16px; border-radius:999px;
+    border:1px solid var(--line-strong); color: var(--ink);
+    transition: border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn svg{ width:15px; height:15px; fill: currentColor; }
+  .btn:hover, .btn:focus-visible{ border-color: var(--accent); color: var(--accent); }
+  .btn.primary{ background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover, .btn.primary:focus-visible{ background: var(--accent-strong); border-color: var(--accent-strong); color: var(--accent-ink); }
+  .paper-card details{ margin-top: 18px; border-top:1px solid var(--line); padding-top: 14px; }
+  .paper-card summary{ cursor:pointer; font-size:0.86rem; color: var(--ink-soft); }
+  .paper-card summary:hover{ color: var(--accent); }
+  .paper-card details p{ font-size:0.9rem; color: var(--ink-soft); margin: 12px 0 0; max-width:none; }
+
   /* links */
   .link-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin-top:6px; }
   .link-card{
@@ -344,8 +383,38 @@
     <p class="stack-line"><b data-en="Model" data-ko="모델">Model</b> ESM-2 (Meta AI) &nbsp;·&nbsp; <b data-en="Approach" data-ko="접근법">Approach</b> <span data-en="semi-supervised pseudo-labeling" data-ko="준지도 학습(가짜 라벨링)">semi-supervised pseudo-labeling</span> &nbsp;·&nbsp; <b data-en="Task" data-ko="과제">Task</b> <span data-en="subcellular localization classification" data-ko="세포 내 위치 분류">subcellular localization classification</span></p>
   </section>
 
+  <section id="paper">
+    <h2 class="section-title"><span class="section-num">02</span><span data-en="Paper" data-ko="논문">Paper</span></h2>
+    <article class="paper-card">
+      <p class="paper-meta" data-en="Research paper · 2026 · 21 pages" data-ko="연구 논문 · 2026 · 21쪽">Research paper · 2026 · 21 pages</p>
+      <h3 class="paper-title">When Does Self-Training Collapse on Protein Language Model Embeddings?</h3>
+      <p class="paper-subtitle">A Controlled Study of Class Imbalance, Confidence Calibration, and Masking-Based Consistency Regularization</p>
+      <p class="paper-author" data-en="Kim Ihyeon · Haeryong High School" data-ko="김이현 · 해룡고등학교">Kim Ihyeon · Haeryong High School</p>
+      <p class="paper-summary" data-en="Self-training is the simplest semi-supervised method, but it can fall far below a supervised-only baseline. Using frozen ESM-2 embeddings on DeepLoc 2.0, I directly manipulate class imbalance to find when that collapse happens, why, and which fixes actually work." data-ko="자기 학습(self-training)은 가장 단순한 준지도 학습 방법이지만, 라벨 데이터만 쓴 지도 학습보다도 크게 나빠질 수 있습니다. DeepLoc 2.0 데이터에서 고정된 ESM-2 임베딩을 사용해 클래스 불균형을 직접 조작하며, 이 붕괴가 언제·왜 일어나는지, 그리고 어떤 해결책이 실제로 효과가 있는지를 분석했습니다.">Self-training is the simplest semi-supervised method, but it can fall far below a supervised-only baseline. Using frozen ESM-2 embeddings on DeepLoc 2.0, I directly manipulate class imbalance to find when that collapse happens, why, and which fixes actually work.</p>
+      <ul class="paper-findings">
+        <li data-en="Collapse concentrates in a reproducible “danger zone” of roughly 8–20% positive rate." data-ko="붕괴는 양성 비율 약 8–20%의 재현 가능한 “위험 구간”에 집중됩니다.">Collapse concentrates in a reproducible “danger zone” of roughly 8–20% positive rate.</li>
+        <li data-en="Rising calibration error (ECE) accompanies every collapse (r = −0.91), but pre-training ECE does not predict it." data-ko="모든 붕괴에는 보정 오차(ECE) 상승이 동반되지만(r = −0.91), 학습 전 ECE로는 붕괴를 예측할 수 없습니다.">Rising calibration error (ECE) accompanies every collapse (r = −0.91), but pre-training ECE does not predict it.</li>
+        <li data-en="Class-balanced pseudo-label selection eliminates collapse; masking-based consistency regularization stays robust throughout." data-ko="클래스 균형 가짜 라벨 선택은 붕괴를 완전히 없애고, 마스킹 기반 일관성 정규화는 전 구간에서 안정적입니다.">Class-balanced pseudo-label selection eliminates collapse; masking-based consistency regularization stays robust throughout.</li>
+      </ul>
+      <div class="paper-actions">
+        <a class="btn primary" href="papers/self-training-collapse-plm.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16"><path d="M4 1h5.6L13 4.4V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm5 1.2V5h2.8L9 2.2ZM5 8v1h6V8H5Zm0 2.5v1h6v-1H5Z"/></svg>
+          <span data-en="Read the paper (PDF)" data-ko="논문 읽기 (PDF)">Read the paper (PDF)</span>
+        </a>
+        <a class="btn" href="papers/self-training-collapse-plm.pdf" download>
+          <svg viewBox="0 0 16 16"><path d="M7.4 1h1.2v8.1l2.9-2.9.9.8L8 11.4 3.6 7l.9-.8 2.9 2.9V1ZM2 13h12v1.2H2V13Z"/></svg>
+          <span data-en="Download" data-ko="다운로드">Download</span>
+        </a>
+      </div>
+      <details>
+        <summary data-en="Abstract" data-ko="초록 (영문)">Abstract</summary>
+        <p>Self-training (pseudo-labeling) is the simplest and most widely used semi-supervised learning (SSL) method, but when and why it collapses—performance falling far below a supervised-only baseline, not just short of it—remains poorly characterized quantitatively. We study this using protein language model (PLM) embeddings as a controlled testbed, directly manipulating class imbalance on frozen ESM-2 embeddings (DeepLoc 2.0 subcellular localization) to isolate its causal role. Across a fine-grained sweep and multiple seeds per condition, collapse concentrates in a reproducible “danger zone” (roughly 8–20% positive rate), confirmed to reflect training-pool imbalance itself rather than train-test distribution mismatch. Applying seed-level statistical rigor to calibration, we show Expected Calibration Error (ECE) reliably rises whenever self-training collapses (r = −0.91, partial r = −0.92 controlling for imbalance level), while pre-training ECE does not predict later collapse—indicating miscalibration is a necessary but not sufficient precursor. Comparing remedies, calibrated self-training and confidence-threshold tuning both give only partial relief, while explicitly balancing which pseudo-labels are accepted across classes eliminates collapse entirely and slightly exceeds the supervised baseline; masking-based consistency regularization, which never thresholds into hard pseudo-labels, is robust throughout without any calibration correction. We further show the danger zone reproduces at a four-times-larger PLM scale, is not explained by embedding geometry, and persists against binary-adapted DARP and CReST baselines from the class-imbalanced SSL literature—both underperform our class-balanced selection, with DARP collapsing even more than naive self-training despite an oracle advantage unavailable in practice. We frame protein PLMs as a case study for a general SSL failure mode, and release our controlled-imbalance protocol, failure-regime criteria, and remedy comparisons for use in other domains.</p>
+      </details>
+    </article>
+  </section>
+
   <section>
-    <h2 class="section-title"><span class="section-num">02</span><span data-en="Recognition" data-ko="수상">Recognition</span></h2>
+    <h2 class="section-title"><span class="section-num">03</span><span data-en="Recognition" data-ko="수상">Recognition</span></h2>
     <div class="recog-card">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5.2"/><path d="M8.5 12.6 6.5 21l5.5-3 5.5 3-2-8.4"/></svg>
       <div>
@@ -360,7 +429,7 @@
   </section>
 
   <section style="border-bottom:none;">
-    <h2 class="section-title"><span class="section-num">03</span><span data-en="Get in touch" data-ko="연락하기">Get in touch</span></h2>
+    <h2 class="section-title"><span class="section-num">04</span><span data-en="Get in touch" data-ko="연락하기">Get in touch</span></h2>
     <div class="link-grid">
       <a class="link-card" href="mailto:2hyeon1702@gmail.com">
         <svg viewBox="0 0 16 16"><path d="M1.5 3h13a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm.4 1.4v.1L8 8.8l6.1-4.3v-.1H1.9ZM14.5 5.8 8.3 10.1a.6.6 0 0 1-.6 0L1.5 5.8V12h13V5.8Z"/></svg>
