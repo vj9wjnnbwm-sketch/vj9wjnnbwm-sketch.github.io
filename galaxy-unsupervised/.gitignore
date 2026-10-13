@@ -1,0 +1,5 @@
+.venv/
+data/raw/
+data/*.h5
+features/*.npy
+__pycache__/
