@@ -8,3 +8,4 @@ pillow
 h5py
 tqdm
 umap-learn
+requests
